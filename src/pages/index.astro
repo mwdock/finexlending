@@ -1,399 +1,392 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import Header from '~/components/widgets/Header.astro';
+
+import { lifeStages } from '~/data/lifeStages';
+import { mortgageServices } from '~/data/mortgageServices';
+import { headerData } from '~/navigation';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Finex Lending - Canada’s Mortgage Lending Specialists',
+  description:
+    'Verico Finex Lending delivers Canadian residential mortgage strategies with flexible products, expert negotiation, and lifelong advice.',
   ignoreTitleTemplate: true,
 };
+
+const reasons = [
+  {
+    label: 'Choice',
+    description:
+      'With access to multiple products through dozens of lenders, including banks, trust companies, credit unions, and private funders, we have the mortgage to meet your ever-changing needs.',
+  },
+  {
+    label: 'Flexibility',
+    description:
+      'We’re able to get more mortgages funded. Whether you’re self-employed, new to Canada, rebuilding credit, or investing in property, we partner with lenders who specialize in every scenario.',
+  },
+  {
+    label: 'Negotiation',
+    description:
+      'We negotiate on behalf of borrowers daily, so we know how to secure the product and rate that fits your unique needs—no matter how many properties you’ve purchased.',
+  },
+  {
+    label: 'Reliability',
+    description:
+      'Mortgage requirements, qualification rules, and products change quickly. We stay ahead of the curve so the advice you receive is always timely and relevant.',
+  },
+  {
+    label: 'Relationships',
+    description:
+      'We’re here for you throughout your entire time as a mortgage holder. Whenever life changes, we adapt your mortgage strategy and keep you on track to becoming mortgage-free.',
+  },
+];
+
+const finexStory = [
+  'My background in integrated financial planning with strategic efficiencies for incorporated executives and small business owners began in 2001—hence my company name FI-NEX.',
+  'My experience across insurance, retail, and corporate finance motivated me to provide solutions for incorporated professionals and business owners who needed affordable lending. By 2006 I was licensed in both mortgage brokering and real estate, and in 2010 I aligned with a national network of brokerages.',
+  'I’ve maintained a referral-based mortgage office in Kelowna supported by a team of young, innovative brokers serving all of British Columbia and Ontario.',
+  'Our team is passionate about providing mortgage solutions that exceed expectations. We work with first-time buyers, entrepreneurs, incorporated professionals, and sophisticated real estate investors alike.',
+];
+
+const davidContact = [
+  { label: 'British Columbia', value: '250-575-2468', href: 'tel:12505752468' },
+  { label: 'Ontario', value: '905-873-4717', href: 'tel:19058734717' },
+  { label: 'Email', value: 'dwcd@finexlending.ca', href: 'mailto:dwcd@finexlending.ca' },
+];
+
+const affiliations = [
+  {
+    name: 'VERICO Mortgage Broker Network',
+    logo: 'https://finexlending.ca/wp-content/uploads/2020/06/Untitled-drawing.png',
+  },
+  {
+    name: 'Paragon Mortgage',
+    logo: 'https://finexlending.ca/wp-content/uploads/2020/05/Paragon-Logo-2018-Blue-Clear.png',
+  },
+  {
+    name: 'MortgagePal',
+    logo: 'https://finexlending.ca/wp-content/uploads/2020/10/MortgagePal_Logo_Reversed-1.png',
+  },
+];
+
+const heroBackground = 'https://finexlending.ca/wp-content/uploads/2022/10/pexels-chris-goodwin-32870-scaled.jpg';
+const calendlyUrl = 'https://calendly.com/mackenzie-finex/';
+const preapprovalUrl = 'https://finex-lending.mtg-app.com/signup?refId=c174f899-f110-44a4-87fb-4ff67a8d3e20';
+const officeLocations = [
+  {
+    name: 'Finex Lending Team — Kelowna',
+    phone: '250-575-2468',
+    phoneHref: 'tel:12505752468',
+    mapSrc: 'https://maps.google.com/maps?q=347%20Leon%20Ave%20Finex&t=m&z=10&output=embed&iwloc=near',
+  },
+  {
+    name: 'Finex Lending Team — Ontario',
+    phone: '905-873-4717',
+    phoneHref: 'tel:19058734717',
+    mapSrc: 'https://maps.google.com/maps?q=23%20McGilvray%20Crescent%20Finex&t=m&z=10&output=embed&iwloc=near',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="header">
+    <Header {...headerData} isSticky isDark showRssFeed showToggleTheme />
+  </Fragment>
 
   <Hero
     actions={[
       {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
+        variant: 'secondary',
+        text: 'Book a FREE Consultation',
+        href: calendlyUrl,
         target: '_blank',
-        icon: 'tabler:download',
+        class:
+          'bg-white text-secondary font-semibold tracking-wide uppercase py-3.5 px-6 border border-white/80 shadow-lg shadow-black/10 transition-colors duration-200 hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-emerald-400 hover:border-transparent focus-visible:ring-2 focus-visible:ring-white/70',
       },
-      { text: 'Learn more', href: '#features' },
+      {
+        variant: 'secondary',
+        text: 'Get Pre-Approved Today',
+        href: preapprovalUrl,
+        target: '_blank',
+        class:
+          'bg-white text-secondary font-semibold uppercase py-3.5 px-6 border border-white/80 shadow-lg shadow-black/10 transition-colors duration-200 hover:text-white hover:bg-gradient-to-r hover:from-secondary hover:to-emerald-400 hover:border-transparent focus-visible:ring-2 focus-visible:ring-white/70',
+      },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
+    <Fragment slot="bg">
+      <div class="absolute inset-0">
+        <img src={heroBackground} alt="Finex Lending" class="w-full h-full object-cover" loading="eager" />
+        <div class="absolute inset-0 bg-[#24201D]/85"></div>
+      </div>
+    </Fragment>
+
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      <span class="block font-heading text-white text-5xl md:text-6xl">Verico Finex Lending</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      <span class="block text-white/85 text-xl md:text-2xl font-medium">Experts in Canadian Residential Mortgage Solutions</span>
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <section id="our-approach" class="py-16 md:py-24 bg-white dark:bg-slate-950/40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold mb-4">Our Approach</p>
+      <h2 class="text-4xl md:text-5xl font-heading font-semibold text-gray-900 dark:text-white leading-tight mb-6">
+        Mortgage advice that adapts to every stage of Canadian homeownership.
+      </h2>
+      <p class="text-lg text-muted">
+        WE USE INTEGRATED MORTGAGE STRATEGIES TO ENSURE OUR CLIENTS OBTAIN THE BEST AVAILABLE RATES AND THE MOST FLEXIBLE
+        MORTGAGE PRODUCTS.
+      </p>
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+      <div class="mt-16 text-left">
+        <p class="text-base font-semibold text-gray-900 dark:text-white mb-6">
+          Five key reasons to choose us for all your mortgage needs:
+        </p>
+        <div class="grid gap-4 md:grid-cols-2">
+          {reasons.map((reason, idx) => (
+            <details
+              class="group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 px-6 py-5"
+            >
+              <summary class="flex items-center justify-between cursor-pointer">
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                  <span class="text-secondary font-semibold text-lg tracking-[0.3em]">
+                    {String.fromCharCode(8544 + idx)}.
+                  </span>
+                  <span class="text-xl font-semibold text-gray-900 dark:text-white">{reason.label}</span>
+                </div>
+                <span class="text-secondary group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="text-base text-muted mt-4">{reason.description}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Features Widget *************** -->
+  <section id="about" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-[0.9fr_1.1fr] items-center">
+      <div class="rounded-[2.75rem] overflow-hidden shadow-2xl ring-1 ring-slate-900/10 dark:ring-white/10">
+        <img
+          src="https://finexlending.ca/wp-content/uploads/2022/10/David-2022-scaled.jpg"
+          alt="David Docksteader"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold mb-3">Leadership Spotlight</p>
+        <h2 class="text-4xl font-heading font-semibold text-gray-900 dark:text-white mb-2">David Docksteader</h2>
+        <p class="text-lg text-muted mb-6">President, Mortgage Broker | MBI</p>
+        <ul class="space-y-2 mb-8">
+          {davidContact.map((item) => (
+            <li class="flex flex-wrap items-center text-base text-gray-900 dark:text-white gap-3">
+              <span class="text-sm uppercase tracking-[0.35em] text-secondary">{item.label}</span>
+              <a href={item.href} class="font-semibold hover:text-primary">
+                {item.value}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="text-base text-muted mb-6">
+          We will get you the best interest rate and most flexible mortgage product available across the market tailored
+          to your unique circumstances. You are our client—not the banks. We negotiate with them for you and keep the
+          focus on long-term results.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#our-approach"
+            class="inline-flex items-center justify-center rounded-full border border-secondary text-secondary px-6 py-3 font-semibold hover:bg-secondary hover:text-white transition"
+            >Learn More</a
+          >
+          <a
+            href={preapprovalUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-primary text-white px-6 py-3 font-semibold hover:bg-secondary transition"
+            >Get Pre-Approved</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
+  <section class="py-16 md:py-24 bg-white dark:bg-slate-950/40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold mb-4">Our Beginnings</p>
+      <h2 class="text-4xl font-heading font-semibold text-gray-900 dark:text-white mb-6">finex \ ‘fī – nĕx \ adjective</h2>
+      <div class="space-y-5 text-base text-muted text-left">
+        {finexStory.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <!-- Content Widget **************** -->
+  <section class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs uppercase tracking-[0.4em] font-semibold text-secondary mb-4">Our Affiliations</p>
+      <h2 class="text-4xl font-heading font-semibold text-gray-900 dark:text-white mb-4">Relationships that expand our reach</h2>
+      <p class="text-lg text-muted mb-10">
+        Affiliated with Paragon Mortgage in Western Canada and MortgagePal (FSCO License #: 12685) in the East. Part of
+        the VERICO Mortgage Broker Network and an active member of MPC.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-10">
+        {affiliations.map((partner) => (
+          <div class="bg-white rounded-2xl shadow-md shadow-slate-200/70 p-4 w-[180px] flex items-center justify-center">
+            <img src={partner.logo} alt={partner.name} class="h-12 object-contain" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 5.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
+  <section id="lifestages" class="py-16 md:py-24 bg-white dark:bg-slate-950/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold mb-3">Life Stages</p>
+        <h2 class="text-4xl font-heading font-semibold text-gray-900 dark:text-white">Navigate every chapter</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {lifeStages.map((stage) => (
+          <article class="group rounded-3xl overflow-hidden border border-slate-200/80 dark:border-white/10 bg-white dark:bg-white/5 flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src={stage.image} alt={stage.title} class="w-full h-full object-cover group-hover:scale-105 duration-300" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+              <h3 class="absolute bottom-4 left-4 text-white text-xl font-semibold">{stage.title}</h3>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <p class="text-base text-muted flex-1">{stage.summary}</p>
+              <a
+                href={`/life-stages/${stage.slug}`}
+                class="mt-6 inline-flex items-center text-secondary font-semibold hover:text-primary"
+                >Read more →</a
+              >
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+  <section id="services" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <p class="text-xs uppercase tracking-[0.4em] text-secondary font-semibold mb-3">Mortgage Services</p>
+        <h2 class="text-4xl font-heading font-semibold text-gray-900 dark:text-white">Solutions for every need</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {mortgageServices.map((service) => (
+          <article class="rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white dark:bg-white/5 p-6 flex flex-col">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">{service.title}</h3>
+            <p class="text-base text-muted flex-1">{service.summary}</p>
+            <a
+              href={`/mortgage-services/${service.slug}`}
+              class="mt-6 inline-flex items-center text-secondary font-semibold hover:text-primary"
+              >Learn more →</a
+            >
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+  <section id="contact" class="py-16 md:py-24 bg-slate-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <div class="space-y-8">
+          <p class="text-xs uppercase tracking-[0.4em] text-white/70 font-semibold mb-3">Contact Us</p>
+          <h2 class="text-4xl font-heading font-semibold mb-4">Let’s talk about your mortgage</h2>
+          <p class="text-white/80 mb-8">
+            Send us a message and we'll get back to you as quickly as possible, or call
+            <a href="tel:18666100320" class="text-white font-semibold underline">1-866-610-0320</a>.
+          </p>
+          <div class="space-y-4">
+            <a href="tel:18666100320" class="text-3xl font-semibold">1-866-610-0320</a>
+            <p class="text-white/80">Available across British Columbia and Ontario.</p>
+          </div>
+          <div class="space-y-8 pt-4 border-t border-white/15">
+            {officeLocations.map((office) => (
+              <article class="space-y-3">
+                <div>
+                  <p class="text-sm uppercase tracking-[0.35em] text-white/60">Visit Us</p>
+                  <h3 class="text-2xl font-semibold text-white">{office.name}</h3>
+                  <a href={office.phoneHref} class="text-white font-semibold underline">
+                    Office: {office.phone}
+                  </a>
+                </div>
+                <div class="overflow-hidden rounded-3xl ring-1 ring-white/30 shadow-2xl">
+                  <iframe
+                    src={office.mapSrc}
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="w-full h-64"
+                    title={office.name}
+                  ></iframe>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          class="bg-white text-gray-900 rounded-3xl p-6 shadow-2xl space-y-4"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="text-sm font-semibold text-secondary uppercase tracking-[0.3em]">Send a Message</p>
+          <label class="block text-sm font-medium text-gray-700">
+            Full Name
+            <input
+              type="text"
+              name="name"
+              required
+              class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-primary focus:ring-primary"
+            />
+          </label>
+          <label class="block text-sm font-medium text-gray-700">
+            Email
+            <input
+              type="email"
+              name="email"
+              required
+              class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-primary focus:ring-primary"
+            />
+          </label>
+          <label class="block text-sm font-medium text-gray-700">
+            Phone
+            <input
+              type="tel"
+              name="phone"
+              class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-primary focus:ring-primary"
+            />
+          </label>
+          <label class="block text-sm font-medium text-gray-700">
+            Message
+            <textarea
+              name="message"
+              rows="4"
+              required
+              class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-primary focus:ring-primary"
+            ></textarea>
+          </label>
+          <label class="flex items-start space-x-3 text-sm text-gray-600">
+            <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" />
+            <span>I consent to Finex Lending contacting me regarding my mortgage inquiry.</span>
+          </label>
+          <button
+            type="submit"
+            class="w-full rounded-full bg-primary text-white font-semibold py-3 shadow-lg shadow-primary/30 hover:bg-secondary transition"
+          >
+            Submit Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 </Layout>

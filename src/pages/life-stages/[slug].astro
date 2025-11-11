@@ -1,0 +1,57 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { lifeStages, type LifeStage } from '~/data/lifeStages';
+
+export function getStaticPaths() {
+  return lifeStages.map((stage) => ({
+    params: { slug: stage.slug },
+    props: { stage },
+  }));
+}
+
+const { stage } = Astro.props as { stage: LifeStage };
+
+const metadata = {
+  title: `${stage.title} | Life Stages`,
+  description: stage.summary,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs tracking-[0.4em] font-semibold uppercase text-secondary mb-4">Life Stages</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">{stage.title}</h1>
+      {stage.summary && <p class="text-lg text-muted mb-10">{stage.summary}</p>}
+
+      <div class="grid gap-10 md:grid-cols-2">
+        <div class="rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-900/5 dark:ring-white/10">
+          <img src={stage.image} alt={stage.title} class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-3xl border border-dashed border-slate-300 dark:border-white/20 bg-white/40 dark:bg-white/5 p-8 flex flex-col gap-6">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-secondary mb-2">Next steps</p>
+            <p class="text-base text-muted">
+              Add tailored advice, checklists, and financing options for the <strong>{stage.title}</strong> journey.
+              Replace this placeholder copy with the exact steps, documents, or calculators you provide clients.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-6 py-3 font-semibold text-primary hover:bg-primary hover:text-white transition"
+              >Book a call</a
+            >
+            <a
+              href="https://finex-lending.mtg-app.com/signup?refId=c174f899-f110-44a4-87fb-4ff67a8d3e20"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center justify-center rounded-full border border-secondary bg-secondary px-6 py-3 font-semibold text-white hover:bg-primary transition"
+              >Get pre-approved</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

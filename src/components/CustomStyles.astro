@@ -1,5 +1,6 @@
 ---
-import '@fontsource-variable/inter';
+import '@fontsource-variable/raleway';
+import '@fontsource-variable/playfair-display';
 
 // 'DM Sans'
 // Nunito
@@ -21,43 +22,46 @@ import '@fontsource-variable/inter';
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Raleway Variable', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+    --aw-font-serif: 'Playfair Display Variable', 'Raleway Variable', serif;
+    --aw-font-heading: 'Playfair Display Variable', 'Raleway Variable', 'Inter Variable', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: #1f3886;
+    --aw-color-secondary: #0e1d60;
+    --aw-color-accent: #fcb900;
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-text-heading: #0c1224;
+    --aw-color-text-default: #1a1f2c;
+    --aw-color-text-page: #1a1f2c;
+    --aw-color-text-muted: rgba(12, 18, 36, 0.72);
+    --aw-color-bg-page: #f7f8fc;
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    --aw-color-bg-page-dark: #050816;
 
     ::selection {
-      background-color: lavender;
+      background-color: rgba(31, 56, 134, 0.25);
+      color: #0e1d60;
     }
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Raleway Variable', 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+    --aw-font-serif: 'Playfair Display Variable', 'Raleway Variable', serif;
+    --aw-font-heading: 'Playfair Display Variable', 'Raleway Variable', 'Inter Variable', sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: #9db7ff;
+    --aw-color-secondary: #6e84d6;
+    --aw-color-accent: #ffd77a;
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    --aw-color-text-heading: #f8fafc;
+    --aw-color-text-default: rgba(248, 250, 252, 0.92);
+    --aw-color-text-page: rgba(248, 250, 252, 0.92);
+    --aw-color-text-muted: rgba(248, 250, 252, 0.65);
+    --aw-color-bg-page: #050816;
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: rgba(255, 215, 122, 0.35);
+      color: #050816;
     }
   }
 </style>

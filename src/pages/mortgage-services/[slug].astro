@@ -1,0 +1,57 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { mortgageServices, type MortgageService } from '~/data/mortgageServices';
+
+export function getStaticPaths() {
+  return mortgageServices.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props as { service: MortgageService };
+
+const metadata = {
+  title: `${service.title} | Mortgage Services`,
+  description: service.summary,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs tracking-[0.4em] font-semibold uppercase text-secondary mb-4">Mortgage Services</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">{service.title}</h1>
+      {service.summary && <p class="text-lg text-muted mb-10">{service.summary}</p>}
+
+      <div class="grid gap-10 md:grid-cols-2">
+        <div class="rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-900/5 dark:ring-white/10">
+          <img src={service.image} alt={service.title} class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-3xl border border-dashed border-slate-300 dark:border-white/20 bg-white/40 dark:bg-white/5 p-8 flex flex-col gap-6">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-secondary mb-2">What to include</p>
+            <p class="text-base text-muted">
+              Outline your unique process, document checklists, and rate strategies for <strong>{service.title}</strong>
+              here. Replace this placeholder with detailed copy, testimonials, FAQs, or embedded calculators.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-6 py-3 font-semibold text-primary hover:bg-primary hover:text-white transition"
+              >Talk to Finex</a
+            >
+            <a
+              href="https://finex-lending.mtg-app.com/signup?refId=c174f899-f110-44a4-87fb-4ff67a8d3e20"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center justify-center rounded-full border border-secondary bg-secondary px-6 py-3 font-semibold text-white hover:bg-primary transition"
+              >Start application</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
